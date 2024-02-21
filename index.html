@@ -8,23 +8,6 @@
     <link rel="stylesheet" href="css/create-account.css">
 </head>
 <body>
-    <button class="sign-out-button">Sign out</button>
-
-    <form class="auth-form">
-        <div>
-            <label for="email">Email</label>
-            <input type="email" name="email" class="email">
-        </div>
-        <div>
-            <label for="password">Password</label>
-            <input type="password" name="password" class="password">
-        </div>
-        <button class="sign-in-button">Sign in</button>
-    </form>
-    
-    <div class="secret-content">
-        <h1>YOU CAN SEE THIS SECRET MESSAGE IF YOU ARE AUTHENTICATED!</h1>
-    </div>
 
     <div grid class="create-account-container">
         <div class="column--12 column-small--12 create-account__header">Opprett konto!</div>
@@ -96,6 +79,24 @@
             <input type="checkbox" class="create-account__checkbox column--2 offset--5 offset-small--1" required>
             <button class="create-account__corp-button column--10 offset--1 offset-small--1">Opprett!</button>
         </form>
+    </div>
+
+    <button class="sign-out-button">Sign out</button>
+
+    <form class="auth-form">
+        <div>
+            <label for="email">Email</label>
+            <input type="email" name="email" class="email">
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" name="password" class="password">
+        </div>
+        <button class="sign-in-button">Sign in</button>
+    </form>
+    
+    <div class="secret-content">
+        <h1>YOU CAN SEE THIS SECRET MESSAGE IF YOU ARE AUTHENTICATED!</h1>
     </div>
 
     <script src="dist/bundle.js"></script>

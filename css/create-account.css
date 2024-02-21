@@ -1,4 +1,7 @@
 
+body{
+	padding-top: 3rem;
+}
 .sign-out-button, .sign-in-button{
 	display: flex;
 	height: 3rem;
@@ -15,7 +18,7 @@
 	cursor: pointer;
 }
 .create-account-container {
-    border-radius: 15px;
+    border-radius: var(--border-radius);
     background: var(--background-gradient);
     box-shadow: 1px 1px 5px 0px black;
 	width: 50%;
@@ -87,7 +90,7 @@
 	width: 100%;
 	text-align: center;
 	box-shadow: 0rem 0.5rem 1rem 0rem rgba(0, 0, 0, 0.2);
-	border-radius: 15px;
+	border-radius: var(--border-radius);
 }
 
 .create-account__gender:hover {
@@ -116,13 +119,13 @@
     height: 100%; 
 }
 
-.create-account__submit-button {
+.create-account__submit-button, .create-account__corp-button {
 	margin-top: 1rem;
 	margin-bottom: 1.5rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-radius: 15px;
+	border-radius: 1rem;
 	font-size: 1rem;
 	font-weight: 700;
 	height: 3rem;
@@ -130,6 +133,6 @@
 	color: white;
 }
 
-.create-account__submit-button:hover {
+.create-account__submit-button:hover, .create-account__corp-button:hover {
 	background: linear-gradient(to top, #620084, #015BAB);
 }

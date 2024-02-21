@@ -18,20 +18,23 @@ const corporateUserCollection = collection(database, 'corporateUsers');
 const authService = getAuth(); // Initialize the Auth service
 
 // Select private or corporate
+const privateButton = document.querySelector('.create-account__private-button');
+const corporateButton = document.querySelector('.create-account__corporate-button');
 const privateForm = document.querySelector('.create-account__private-form');
 const corporateForm = document.querySelector('.create-account__corporate-form');
 
-const privateButton = document.querySelector('.create-account__private-button');
-const corporateButton = document.querySelector('.create-account__corporate-button');
-
-privateButton.addEventListener('click', () => {
-    corporateForm.style.display = 'none'; // Hide corporate form
-    privateForm.style.display = 'grid'; // Show private form
+privateButton.addEventListener('click', function() {
+    privateButton.style.background = 'linear-gradient(to top, #620084, #015BAB)';
+    corporateButton.style.background = ''; // Reset corporate button style
+    corporateForm.style.display = 'none';
+    privateForm.style.display = 'grid';
 });
 
-corporateButton.addEventListener('click', () => {
-    privateForm.style.display = 'none'; // Hide private form
-    corporateForm.style.display = 'grid'; // Show corporate form
+corporateButton.addEventListener('click', function() {
+    corporateButton.style.background = 'linear-gradient(to top, #620084, #015BAB)';
+    privateButton.style.background = ''; // Reset private button style
+    privateForm.style.display = 'none';
+    corporateForm.style.display = 'grid';
 });
 
 
@@ -44,9 +47,9 @@ const emailPrivate = document.querySelector('#emailPrivate');
 const phonePrivate = document.querySelector('#phonePrivate');
 const birthdatePrivate = document.querySelector('#birthdatePrivate');
 
-const addUsersForm = document.querySelector('.create-account__submit-button');
+const addPrivateForm = document.querySelector('.create-account__submit-button');
 
-addUsersForm.addEventListener('click', (e) => {
+addPrivateForm.addEventListener('click', (e) => {
     e.preventDefault();
     const newUser = {
         username: userNamePrivate.value,
@@ -70,6 +73,12 @@ addUsersForm.addEventListener('click', (e) => {
     createUserWithEmailAndPassword(authService, userEmail, userPassword)
     .then((userCredential) => {
         console.log('The account has been created successfully:', userCredential);
+    const inputFields = document.querySelectorAll('.create-account__private-form input');
+    inputFields.forEach(input => {
+        input.value = '';
+        console.log('clear');
+    });
+
     })
     .catch(err => console.log(err.message));
 });
@@ -81,7 +90,7 @@ const emailCorporate = document.querySelector('#emailCorporate');
 const phoneCorporate = document.querySelector('#phoneCorporate');
 const orgCorporate = document.querySelector('#orgCorporate');
 
-const addCorporateForm = document.querySelector('.create-account__corporate-submit-button');
+const addCorporateForm = document.querySelector('.create-account__corp-button');
 
 addCorporateForm.addEventListener('click', (e) => {
     e.preventDefault();
@@ -106,6 +115,11 @@ addCorporateForm.addEventListener('click', (e) => {
     createUserWithEmailAndPassword(authService, corporateEmail, corporatePassword)
     .then((corporateCredential) => {
         console.log('The account has been created successfully:', corporateCredential);
+        const inputCorporateFields = document.querySelectorAll('.create-account__corporate-form input');
+        inputCorporateFields.forEach(input => {
+            input.value = '';
+            console.log('clear');
+        });
     })
     .catch(err => console.log(err.message));
 });

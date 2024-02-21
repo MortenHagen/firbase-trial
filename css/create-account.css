@@ -18,7 +18,6 @@
     border-radius: 15px;
     background: var(--background-gradient);
     box-shadow: 1px 1px 5px 0px black;
-    padding: 2rem 0rem;
 	width: 50%;
 	margin: 0 auto;
 }
@@ -33,7 +32,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size: 4rem;
+	font-size: 3.5rem;
 	text-shadow: 0.0625rem 0.0625rem 0 white;
 	font-weight: 700;
 	padding-top: 1rem;
@@ -49,7 +48,7 @@
 	justify-content: center;
 	border-bottom: 0.0625rem solid #015caba1;
 	background: linear-gradient(to left, #015cab, #0157a1);
-	border-radius: 1.5625rem;
+	border-radius: var(--border-radius);
 	overflow: hidden;
 }
 .create-account__private-button:hover, .create-account__corporate-button:hover {
@@ -60,9 +59,9 @@
 }
 
 .create-account__label {
-	font-size: 1rem;
-	padding: 1rem;
-	padding-right: 3rem;
+	font-size: 1.1rem;
+	font-weight: bold;
+	margin-top: 0.8rem;
 	display: flex;
 	color: black;
 	justify-content: center;
@@ -70,21 +69,19 @@
 }
 
 .create-account__input {
-	font-size: 1rem;
-	margin-left: 1rem;
+	display: flex;
+	font-size: 1.3rem;
 	border-radius: var(--border-radius);
-	padding: 0.5rem;
+	padding-top: 0.1rem;
 	text-decoration: underline;
 	text-align: center;
 	height: 1.7rem;
 	border-bottom: 2px solid #015caba1;
-
 }
 
 .create-account__gender {
 	background-color: #015cabe3;
 	color: white;
-	margin-left: 1rem;
 	font-size: 1rem;
 	border: none;
 	width: 100%;
@@ -98,16 +95,20 @@
 }
 
 
-.create-account__terms-header {
-	display: flex;
-	justify-content: center;
-}
 
-.create-account__terms-container{
+.create-account__terms{
 	display: flex;
 	justify-content: center;
 	text-align: center;
 }
+
+.create-account__terms-header {
+	display: flex;
+	justify-content: center;
+	font-weight: bold;
+	margin-top: -1rem;
+}
+
 .create-account__checkbox {
     display: flex;
     justify-content: center;
@@ -117,14 +118,14 @@
 
 .create-account__submit-button {
 	margin-top: 1rem;
-	margin-bottom: 1rem;
+	margin-bottom: 1.5rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	border-radius: 15px;
 	font-size: 1rem;
 	font-weight: 700;
-	height: 2rem;
+	height: 3rem;
 	background: linear-gradient(to left, #015cab, #0157a1);
 	color: white;
 }

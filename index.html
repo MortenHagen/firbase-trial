@@ -33,38 +33,38 @@
         
     <!--Private form-->
         <form grid class="column--10 offset--1 offset-small--1 create-account__private-form">
-            <label class="column--2 column-small--2 create-account__label offset--1" for="userNamePrivate">Username:</label>
-            <input class="column--7 column-small--10 create-account__input" type="text" id="userNamePrivate" name="userNamePrivate" required>
+            <label class="create-account__label column--12 offset-small--1" for="userNamePrivate">Username:</label>
+            <input class="create-account__input column--8 offset--2 offset-small--1" type="text" id="userNamePrivate" name="userNamePrivate" required>
 
-            <label class="column--2 column-small--2 create-account__label offset--1" for="passwordPrivate">Password:</label>
-            <input class="column--7 column-small--10 create-account__input" type="password" id="passwordPrivate" name="passwordPrivate" required>
+            <label class="create-account__label column--12 offset-small--1" for="passwordPrivate">Password:</label>
+            <input class="create-account__input column--8 offset--2 offset-small--1" type="password" id="passwordPrivate" name="passwordPrivate" required>
 
-            <label class="column--2 column-small--2 create-account__label offset--1" for="namePrivate">Name:</label>
-            <input class="column--7 column-small--10 create-account__input" type="text" id="namePrivate" name="namePrivate" required>
+            <label class="create-account__label column--12 offset-small--1" for="namePrivate">Name:</label>
+            <input class="create-account__input column--8 offset--2 offset-small--1" type="text" id="namePrivate" name="namePrivate" required>
 
-            <label class="column--2 column-small--2 create-account__label offset--1" for="emailPrivate">Epost:</label>
-            <input class="column--7 column-small--10 create-account__input" type="email" id="emailPrivate" name="emailPrivate" required>
+            <label class="create-account__label column--12 offset-small--1" for="emailPrivate">Epost:</label>
+            <input class="create-account__input column--8 offset--2 offset-small--1" type="email" id="emailPrivate" name="emailPrivate" required>
 
-            <label class="column--2 column-small--2 create-account__label offset--1" for="phonePrivate">Telefonnummer:</label>
-            <input class="column--7 column-small--10 create-account__input" type="tel" id="phonePrivate" name="phonePrivate" required>
+            <label class="create-account__label column--12 offset-small--1" for="phonePrivate">Telefonnummer:</label>
+            <input class="create-account__input column--8 offset--2 offset-small--1" type="tel" id="phonePrivate" name="phonePrivate" required>
 
-            <label class="column--2 column-small--2 create-account__label offset--1" for="birthdatePrivate">Fødselsdato:</label>
-            <input class="column--7 column-small--10 create-account__input" type="date" id="birthdatePrivate" name="birthdatePrivate" required>
+            <label class="create-account__label column--12 offset-small--1" for="birthdatePrivate">Fødselsdato:</label>
+            <input class="create-account__input column--8 offset--2 offset-small--1" type="date" id="birthdatePrivate" name="birthdatePrivate" required>
             
-            <label class="column--2 column-small--2 create-account__label offset--1" for="genderPrivate">Gender:</label>
+            <label class="create-account__label column--12 offset-small--1" for="genderPrivate">Gender:</label>
 
-            <select class="column--3 column-small--3 create-account__gender" id="genderPrivate" name="gender">
+            <select class="column--2 column-small--2 offset--5 offset-small--5 create-account__gender" id="genderPrivate" name="gender">
                 <option value="male">Male</option>
                 <option value="female">Female</option>
             </select>
-            <div class="create-account__terms-container column--10 offset--1 offset-small--1">
-                <div class="create-account__terms">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget felis urna.Phasellus in risus at mi sollicitudin posuere.</p>
-                </div>
+            
+            <div class="create-account__terms  column--10 offset--1 offset-small--1">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget felis urna.Phasellus in risus at mi sollicitudin posuere.</p>
             </div>
-            <h3 class="create-account__terms-header column--10 offset--1 offset-small--1">Kryss av for og godta vilkårene</h3>
-            <input type="checkbox" class="create-account__checkbox column--2 offset--5 offset-small--1" required>
-            <button class="create-account__submit-button column--10 offset--1 offset-small--1">Opprett!</button>
+            
+            <label for="checkbox" class="create-account__terms-header column--10 offset--1 offset-small--1">Kryss av for og godta vilkårene</label>
+            <input type="checkbox" name="checkbox" class="create-account__checkbox column--2 offset--5 offset-small--1" required>
+            <button class="create-account__submit-button column--4 offset--4 column-small--4 offset-small--4">Opprett!</button>
         </form>
 
         <!--Corporate form-->

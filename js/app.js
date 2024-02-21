@@ -122,6 +122,7 @@ const signOutUsers = ()=>{
 signOutButton.addEventListener('click', (e)=>{
     e.preventDefault();
     signOutUsers();
+    console.log('signed out');
 })
 
 

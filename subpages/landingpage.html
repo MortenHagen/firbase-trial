@@ -5,34 +5,28 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>My Site</title>
 
-	<link rel="stylesheet" href="css/reset-roots.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="../css/reset-roots.css">
+	<link rel="stylesheet" href="../css/my-site.css">
 </head>
 <body grid class="secret-content">
 
     <button class="sign-out-button">Sign out</button>
 
-	<form id="image-upload-form">
-		<input type="file" id="image-input" accept="image/*">
-		<button type="submit">Upload Image</button>
-	</form>	
-
 	<!--logo-->
-	<button class="header2 column--2 offset--1">
-		<a href="main-page.html" target="_self">
-			 <img src="assets/allwin-logo-png-800x800px.png" >
+	<button class="header2 column--2 offset--5">
+		<a href="../index.html" target="_self">
+			 <img src="../assets/allwin-logo-png-800x800px.png" >
 		</a>
 	</button>
 
-	<div class="profile-picture-container column--1 offset--5"></div>
+	<form id="image-upload-form" class="upload-picture__container column--4 offset--4">
+		<input type="file" id="image-input" accept="image/*" placeholder="Insert https link to set picture" class="upload-picture__input">
+		<button type="submit" class="upload-picture__button">Upload</button>
+	</form>	
 
-	<div class="upload-picture__container column--3 offset--1">
-		<p>Upload a profile picture</p>
-		<input type="text" placeholder="Insert https link to set picture" class="upload-picture__input">
-		<button class="upload-picture__button">Upload link</button>
-	</div>
+	<div class="profile-picture-container column--2 offset--5"></div>
 
-	<div class="greetUser column--3 offset--4"></div>
+	<div class="greetUser column--4 offset--4"></div>
 
 	<script src="../dist/mySiteBundle.js"></script>
 </body>

@@ -31,10 +31,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
     // Check user's authentication status
     const checkUsersStatus = () => {
-        const secretContent = document.querySelector('.secret-content');
         onAuthStateChanged(authService, user => {
             if(user){
-                secretContent.style.display = 'block';
                 const userId = user.uid;
                 // Fetch user document from Firestore
                 const userDocRef = doc(database, "users", userId);
@@ -49,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function(){
                         console.log("Error getting document:", error);
                     });
             } else {
-                secretContent.style.display = 'none';
+					window.location.href = '../index.html';
             }
         });
     };

@@ -1,8 +1,8 @@
 import firebaseConfig from "./firebaseConfig";
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, addDoc, doc, getDoc } from 'firebase/firestore';
-import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
-import { getStorage, ref, uploadBytes } from 'firebase/storage'; // Added for file upload
+import { getFirestore, doc, collection, getDocs, query, where } from 'firebase/firestore';
+import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
+import { getStorage, ref, uploadBytes } from 'firebase/storage';
 
 document.addEventListener('DOMContentLoaded', function(){
 
@@ -10,7 +10,52 @@ document.addEventListener('DOMContentLoaded', function(){
     const firebaseApp = initializeApp(firebaseConfig);
     const authService = getAuth(firebaseApp);
     const database = getFirestore(firebaseApp);
-    const storage = getStorage(firebaseApp); // Added for file upload
+    const storage = getStorage(firebaseApp); 
+
+	// Check user's authentication status
+	const checkUsersStatus = () => {
+		onAuthStateChanged(authService, async (user) => {
+			if (user) {
+					try {
+							// Fetch data from the "privateUsers" collection
+							const q = query(collection(database, "privateUsers"), where("email", "==", user.email));
+							const querySnapshot = await getDocs(q);
+							querySnapshot.forEach((doc) => {
+									const displayUserInfoContainer = document.querySelector('.greetUser')
+									const userData = doc.data();
+									// Create <p> element to display user data
+									const userDataParagraph = document.createElement('p');
+									// Set innerHTML of <p> element with user data
+									userDataParagraph.innerHTML = `
+										<strong>Name:</strong> ${userData.name}<br>
+										<strong>Username:</strong> ${userData.username}<br>
+										<strong>Email:</strong> ${userData.email}<br>
+										<strong>Phone:</strong> ${userData.phone}<br>
+										<strong>Birthdate:</strong> ${userData.birthdate}<br>
+									`;
+									// Append <p> element to the body
+									displayUserInfoContainer.appendChild(userDataParagraph);
+							});
+					} catch (error) {
+							console.log("Error getting documents: ", error);
+					}
+			} else {
+					window.location.href = '../index.html';
+			}
+		});
+	};
+
+	checkUsersStatus();
+
+    // Event listener for form submission
+    const imageUploadForm = document.querySelector('.upload-picture__container');
+    const imageInput = document.querySelector('.upload-picture__input');
+
+    imageUploadForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const file = imageInput.files[0];
+        handleFileUpload(file);
+    });
 
     // Function to handle file upload
     const handleFileUpload = (file) => {
@@ -18,50 +63,16 @@ document.addEventListener('DOMContentLoaded', function(){
             // Upload file to Firebase Storage
             const storageRef = ref(storage, 'images/' + file.name);
             uploadBytes(storageRef, file)
-                .then(() => {
-                    console.log('File uploaded successfully!');
-                })
-                .catch((error) => {
-                    console.error('Error uploading file:', error);
-                });
+				.then(() => {
+					console.log('File uploaded successfully!');
+				})
+				.catch((error) => {
+					console.error('Error uploading file:', error);
+				});
         } else {
             console.error('No file selected');
         }
     };
-
-    // Check user's authentication status
-    const checkUsersStatus = () => {
-        onAuthStateChanged(authService, user => {
-            if(user){
-                const userId = user.uid;
-                // Fetch user document from Firestore
-                const userDocRef = doc(database, "users", userId);
-                getDoc(userDocRef)
-                    .then((doc) => {
-                        if (doc.exists()) {
-                            const userData = doc.data();
-                            // Now you can use userData to display information on your landing page
-                        } 
-                    })
-                    .catch((error) => {
-                        console.log("Error getting document:", error);
-                    });
-            } else {
-					window.location.href = '../index.html';
-            }
-        });
-    };
-    
-    checkUsersStatus();
-
-    // Event listener for form submission
-    const imageUploadForm = document.getElementById('image-upload-form');
-    const imageInput = document.getElementById('image-input');
-    imageUploadForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const file = imageInput.files[0];
-        handleFileUpload(file);
-    });
 
     // Sign out users
     const signOutButton = document.querySelector('.sign-out-button');
@@ -73,7 +84,6 @@ document.addEventListener('DOMContentLoaded', function(){
             })
             .catch(err => console.log(err.message));
     };
-
     signOutButton.addEventListener('click', (e) => {
         e.preventDefault();
         signOutUsers();
